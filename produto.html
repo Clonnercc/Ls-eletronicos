@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Produto | LS Eletrônicos</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<header class="topo">
+
+<div class="container">
+
+<a href="index.html" class="logo">
+
+LS <span>Eletrônicos</span>
+
+</a>
+
+<a href="carrinho.html" class="carrinho">
+
+<i class="fas fa-shopping-cart"></i>
+
+Carrinho
+
+<span id="contadorCarrinho">0</span>
+
+</a>
+
+</div>
+
+</header>
+
+<section class="produtoPagina">
+
+<div class="container">
+
+<div class="produtoGrid">
+
+<div class="imagemProduto">
+
+<img
+id="imagemProduto"
+src=""
+alt="Produto">
+
+</div>
+
+<div class="informacoesProduto">
+
+<h1 id="nomeProduto">
+
+Carregando...
+
+</h1>
+
+<p class="marca" id="marcaProduto"></p>
+
+<h2 id="precoProduto"></h2>
+
+<p id="descricaoProduto"></p>
+
+<div class="estoque">
+
+Estoque:
+
+<span id="estoqueProduto"></span>
+
+</div>
+
+<div class="acoesProduto">
+
+<button
+class="btnComprar"
+id="btnComprar">
+
+Adicionar ao Carrinho
+
+</button>
+
+<button
+class="btnComprar"
+id="btnFavorito">
+
+❤ Favoritar
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<section class="relacionados">
+
+<h2>Produtos Relacionados</h2>
+
+<div
+id="produtosRelacionados"
+class="gradeProdutos">
+
+</div>
+
+</section>
+
+</div>
+
+</section> <footer>
+
+    <div class="container">
+
+        <hr>
+
+        <p class="copyright">
+
+            © 2026 LS Eletrônicos - Todos os direitos reservados.
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="js/produtos.js"></script>
+<script src="js/carrinho.js"></script>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+
+const id = Number(params.get("id"));
+
+const produto = produtos.find(p => p.id === id);
+
+if(produto){
+
+    document.getElementById("imagemProduto").src = produto.imagem;
+
+    document.getElementById("nomeProduto").innerText = produto.nome;
+
+    document.getElementById("marcaProduto").innerText = produto.marca;
+
+    document.getElementById("precoProduto").innerText =
+        produto.preco.toLocaleString("pt-BR",{
+            style:"currency",
+            currency:"BRL"
+        });
+
+    document.getElementById("descricaoProduto").innerText =
+        produto.descricao;
+
+    document.getElementById("estoqueProduto").innerText =
+        produto.estoque + " unidades";
+
+    document.getElementById("btnComprar").onclick = () => {
+
+        adicionarAoCarrinho(produto.id);
+
+    };
+
+    document.getElementById("btnFavorito").onclick = () => {
+
+        adicionarFavorito(produto.id);
+
+    };
+
+    const relacionados = produtos
+        .filter(p => p.categoria === produto.categoria && p.id !== produto.id)
+        .slice(0,4);
+
+    const lista = document.getElementById("produtosRelacionados");
+
+    relacionados.forEach(item => {
+
+        lista.innerHTML += `
+
+        <div class="produto">
+
+            <img src="${item.imagem}" alt="${item.nome}">
+
+            <div class="info">
+
+                <h3>${item.nome}</h3>
+
+                <p class="preco">
+
+                    ${item.preco.toLocaleString("pt-BR",{
+                        style:"currency",
+                        currency:"BRL"
+                    })}
+
+                </p>
+
+                <a
+                    href="produto.html?id=${item.id}"
+                    class="btnComprar">
+
+                    Ver Produto
+
+                </a>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+}else{
+
+    document.querySelector(".produtoPagina").innerHTML = `
+
+        <div class="container">
+
+            <h1>Produto não encontrado.</h1>
+
+            <a href="index.html" class="btnComprar">
+
+                Voltar para a loja
+
+            </a>
+
+        </div>
+
+    `;
+
+}
+
+</script>
+
+</body>
+</html>
