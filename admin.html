@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Painel Administrativo | LS Eletrônicos</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<header class="topo">
+
+<div class="container">
+
+<a href="index.html" class="logo">
+
+LS <span>Eletrônicos</span>
+
+</a>
+
+</div>
+
+</header>
+
+<section class="admin">
+
+<div class="container">
+
+<h1>Painel Administrativo</h1>
+
+<div class="loginAdmin" id="loginAdmin">
+
+<h2>Entrar</h2>
+
+<form id="formLogin">
+
+<div class="campo">
+
+<label>Usuário</label>
+
+<input
+type="text"
+id="usuario"
+placeholder="Digite o usuário"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Senha</label>
+
+<input
+type="password"
+id="senha"
+placeholder="Digite a senha"
+required>
+
+</div>
+
+<button
+type="submit"
+class="btnComprar">
+
+Entrar
+
+</button>
+
+</form>
+
+</div>
+
+<div
+class="painelAdmin"
+id="painelAdmin"
+style="display:none;">
+
+<h2>Gerenciamento de Produtos</h2>
+
+<form id="formProduto">
+
+<input type="hidden" id="produtoId">
+
+<div class="campo">
+
+<label>Nome</label>
+
+<input
+type="text"
+id="nomeProduto"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Categoria</label>
+
+<select id="categoriaProduto">
+
+<option>Celulares</option>
+
+<option>Notebooks</option>
+
+<option>Tablets</option>
+
+<option>Smartwatch</option>
+
+<option>Fones</option>
+
+<option>TVs</option>
+
+<option>Videogames</option>
+
+<option>Monitores</option>
+
+<option>Periféricos</option>
+
+<option>Acessórios</option>
+
+</select>
+
+</div>
+
+<div class="campo">
+
+<label>Marca</label>
+
+<input
+type="text"
+id="marcaProduto"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Preço</label>
+
+<input
+type="number"
+step="0.01"
+id="precoProduto"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Estoque</label>
+
+<input
+type="number"
+id="estoqueProduto"
+required>
+
+</div>
+
+<div class="campo">
+
+<label>Imagem</label>
+
+<input
+type="file"
+id="imagemProduto"
+accept="image/*">
+
+</div>
+
+<button
+type="submit"
+class="btnComprar">
+
+Salvar Produto
+
+</button>
+
+</form>
+
+<hr>
+
+<h2>Produtos Cadastrados</h2>
+
+<div id="listaAdminProdutos">
+
+</div> 
+  
+<hr>
+
+<h2>Pedidos</h2>
+
+<div class="pedidosAdmin">
+
+    <table class="tabelaPedidos">
+
+        <thead>
+
+            <tr>
+
+                <th>Pedido</th>
+                <th>Cliente</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Ações</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="listaPedidos">
+
+            <!-- Pedidos carregados via JavaScript -->
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<hr>
+
+<h2>Configurações da Sigilo Pay</h2>
+
+<form id="formSigilo">
+
+    <div class="campo">
+
+        <label>Chave Pública</label>
+
+        <input
+            type="text"
+            id="sigiloPublicKey"
+            placeholder="Cole sua chave pública">
+
+    </div>
+
+    <div class="campo">
+
+        <label>URL da API</label>
+
+        <input
+            type="text"
+            id="sigiloApiUrl"
+            placeholder="https://...">
+
+    </div>
+
+    <button
+        type="button"
+        class="btnComprar"
+        onclick="salvarConfiguracoes()">
+
+        Salvar Configurações
+
+    </button>
+
+</form>
+
+<hr>
+
+<button
+    class="btnComprar"
+   
