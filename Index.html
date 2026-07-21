@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LS Eletrônicos | Tecnologia com os melhores preços</title>
+
+<meta name="description"
+content="Loja especializada em celulares, notebooks, acessórios, TVs, videogames e muito mais.">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<header class="topo">
+
+<div class="container">
+
+<a href="index.html" class="logo">
+LS <span>Eletrônicos</span>
+</a>
+
+<form class="pesquisa">
+
+<input
+type="text"
+placeholder="O que você procura hoje?">
+
+<button>
+
+<i class="fas fa-search"></i>
+
+</button>
+
+</form>
+
+<div class="acoes">
+
+<a href="login.html">
+
+<i class="fas fa-user"></i>
+
+Conta
+
+</a>
+
+<a href="favoritos.html">
+
+<i class="fas fa-heart"></i>
+
+Favoritos
+
+</a>
+
+<a href="carrinho.html" class="carrinho">
+
+<i class="fas fa-shopping-cart"></i>
+
+Carrinho
+
+<span id="contadorCarrinho">
+
+0
+
+</span>
+
+</a>
+
+</div>
+
+</div>
+
+<nav class="menu">
+
+<ul>
+
+<li><a href="#">Celulares</a></li>
+
+<li><a href="#">Notebooks</a></li>
+
+<li><a href="#">Tablets</a></li>
+
+<li><a href="#">Smartwatch</a></li>
+
+<li><a href="#">Fones</a></li>
+
+<li><a href="#">Caixas de Som</a></li>
+
+<li><a href="#">TVs</a></li>
+
+<li><a href="#">Videogames</a></li>
+
+<li><a href="#">Promoções</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section class="bannerPrincipal">
+
+<div class="bannerConteudo">
+
+<h1>
+
+Tecnologia com até
+
+<span>70% OFF</span>
+
+</h1>
+
+<p>
+
+Aproveite nossas ofertas exclusivas.
+
+Entrega para todo Brasil.
+
+</p>
+
+<a href="produtos.html">
+
+Ver Produtos
+
+</a>
+
+</div>
+
+</section>
+
+<section class="categorias">
+
+<div class="container">
+
+<h2>
+
+Categorias
+
+</h2>
+
+<div class="gradeCategorias">
+
+<div class="categoria">
+
+<i class="fas fa-mobile-alt"></i>
+
+<h3>Celulares</h3>
+
+</div>
+
+<div class="categoria">
+
+<i class="fas fa-laptop"></i>
+
+<h3>Notebooks</h3>
+
+</div>
+
+<div class="categoria">
+
+<i class="fas fa-headphones"></i>
+
+<h3>Fones</h3>
+
+</div>
+
+<div class="categoria">
+
+<i class="fas fa-gamepad"></i>
+
+<h3>Games</h3>
+
+</div>
+
+<div class="categoria">
+
+<i class="fas fa-tv"></i>
+
+<h3>TVs</h3>
+
+</div>
+
+<div class="categoria">
+
+<i class="fas fa-clock"></i>
+
+<h3>Smartwatch</h3>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="destaques">
+
+<div class="container">
+
+<h2>
+
+Produtos em Destaque
+
+</h2>
+
+<div id="listaProdutos" class="gradeProdutos">
+
+<!-- Os produtos serão carregados pelo JavaScript -->
+
+</div>
+
+</div>
+
+<section class="promocoes">
+
+    <div class="container">
+
+        <h2>Ofertas Imperdíveis</h2>
+
+        <div class="ofertas">
+
+            <div class="oferta">
+                <span class="desconto">-40%</span>
+                <h3>Smartphones</h3>
+                <p>Modelos das principais marcas.</p>
+                <a href="produtos.html">Comprar</a>
+            </div>
+
+            <div class="oferta">
+                <span class="desconto">-30%</span>
+                <h3>Notebooks</h3>
+                <p>Para trabalho, estudos e jogos.</p>
+                <a href="produtos.html">Comprar</a>
+            </div>
+
+            <div class="oferta">
+                <span class="desconto">-50%</span>
+                <h3>Fones Bluetooth</h3>
+                <p>Qualidade de som com ótimo preço.</p>
+                <a href="produtos.html">Comprar</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="maisVendidos">
+
+    <div class="container">
+
+        <h2>Mais Vendidos</h2>
+
+        <div id="maisVendidos" class="gradeProdutos">
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="vantagens">
+
+    <div class="container">
+
+        <div class="vantagem">
+
+            <i class="fas fa-truck"></i>
+
+            <h3>Entrega Rápida</h3>
+
+            <p>Envio para todo o Brasil.</p>
+
+        </div>
+
+        <div class="vantagem">
+
+            <i class="fas fa-lock"></i>
+
+            <h3>Pagamento Seguro</h3>
+
+            <p>PIX pela Sigilo Pay.</p>
+
+        </div>
+
+        <div class="vantagem">
+
+            <i class="fas fa-shield-alt"></i>
+
+            <h3>Compra Protegida</h3>
+
+            <p>Segurança em todas as compras.</p>
+
+        </div>
+
+        <div class="vantagem">
+
+            <i class="fas fa-headset"></i>
+
+            <h3>Suporte</h3>
+
+            <p>Atendimento via WhatsApp.</p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="marcas">
+
+    <div class="container">
+
+        <h2>Marcas Parceiras</h2>
+
+        <div class="logosMarcas">
+
+            <div>Apple</div>
+            <div>Samsung</div>
+            <div>Xiaomi</div>
+            <div>Motorola</div>
+            <div>Lenovo</div>
+            <div>Asus</div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="newsletter">
+
+    <div class="container">
+
+        <h2>Receba Promoções Exclusivas</h2>
+
+        <p>Cadastre seu e-mail e fique por dentro das novidades.</p>
+
+        <form>
+
+            <input
+                type="email"
+                placeholder="Digite seu e-mail">
+
+            <button>
+
+                Cadastrar
+
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="container">
+
+        <div class="rodapeGrid">
+
+            <div>
+
+                <h3>LS Eletrônicos</h3>
+
+                <p>
+                    Tecnologia, qualidade e os melhores preços
+                    para todo o Brasil.
+                </p>
+
+            </div>
+
+            <div>
+
+               
