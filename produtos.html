@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Produtos | LS Eletrônicos</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<header class="topo">
+
+<div class="container">
+
+<a href="index.html" class="logo">
+
+LS <span>Eletrônicos</span>
+
+</a>
+
+<form class="pesquisa">
+
+<input
+type="text"
+id="pesquisaProdutos"
+placeholder="Pesquisar produtos...">
+
+<button type="submit">
+
+<i class="fas fa-search"></i>
+
+</button>
+
+</form>
+
+<a href="carrinho.html" class="carrinho">
+
+<i class="fas fa-shopping-cart"></i>
+
+Carrinho
+
+<span id="contadorCarrinho">0</span>
+
+</a>
+
+</div>
+
+</header>
+
+<section class="catalogo">
+
+<div class="container">
+
+<h1>Todos os Produtos</h1>
+
+<div class="filtros">
+
+<select id="filtroCategoria">
+
+<option value="Todos">Todas as Categorias</option>
+
+<option value="Celulares">Celulares</option>
+
+<option value="Notebooks">Notebooks</option>
+
+<option value="Tablets">Tablets</option>
+
+<option value="Smartwatch">Smartwatch</option>
+
+<option value="Fones">Fones</option>
+
+<option value="TVs">TVs</option>
+
+<option value="Videogames">Videogames</option>
+
+<option value="Monitores">Monitores</option>
+
+<option value="Periféricos">Periféricos</option>
+
+<option value="Acessórios">Acessórios</option>
+
+</select>
+
+<select id="ordenacao">
+
+<option value="">Ordenar</option>
+
+<option value="menorPreco">Menor preço</option>
+
+<option value="maiorPreco">Maior preço</option>
+
+<option value="nome">Nome (A-Z)</option>
+
+</select>
+
+</div>
+
+<div
+id="catalogoProdutos"
+class="gradeProdutos">
+
+<!-- Produtos carregados via JavaScript -->
+
+</div>
+
+<div class="paginacao">
+
+<button
+id="btnCarregarMais"
+class="btnComprar">
+
+Carregar Mais Produtos
+
+</button>
+
+</div>
+
+</div>
+
+</section> <footer>
+
+    <div class="container">
+
+        <hr>
+
+        <p class="copyright">
+
+            © 2026 LS Eletrônicos - Todos os direitos reservados.
+
+        </p>
+
+    </div>
+
+</footer>
+
+<script src="js/produtos.js"></script>
+<script src="js/carrinho.js"></script>
+
+<script>
+
+const catalogo = document.getElementById("catalogoProdutos");
+const pesquisa = document.getElementById("pesquisaProdutos");
+const categoria = document.getElementById("filtroCategoria");
+const ordenacao = document.getElementById("ordenacao");
+const btnMais = document.getElementById("btnCarregarMais");
+
+let quantidade = 12;
+let listaAtual = [...produtos];
+
+function moeda(valor){
+
+    return valor.toLocaleString("pt-BR",{
+        style:"currency",
+        currency:"BRL"
+    });
+
+}
+
+function criarCard(produto){
+
+    return `
+
+    <div class="produto">
+
+        <img src="${produto.imagem}" alt="${produto.nome}">
+
+        <div class="info">
+
+            <h3>${produto.nome}</h3>
+
+            <small>${produto.marca}</small>
+
+            <p class="preco">${moeda(produto.preco)}</p>
+
+            <a
+            href="produto.html?id=${produto.id}"
+            class="btnComprar">
+
+            Ver Produto
+
+            </a>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+function renderizar(){
+
+    catalogo.innerHTML = "";
+
+    listaAtual
+    .slice(0,quantidade)
+    .forEach(produto=>{
+
+        catalogo.innerHTML += criarCard(produto);
+
+    });
+
+    if(quantidade >= listaAtual.length){
+
+        btnMais.style.display="none";
+
+    }else{
+
+        btnMais.style.display="block";
+
+    }
+
+}
+
+function aplicarFiltros(){
+
+    listaAtual = [...produtos];
+
+    if(categoria.value!="Todos"){
+
+        listaAtual = listaAtual.filter(item=>
+
+            item.categoria===categoria.value
+
+        );
+
+    }
+
+    if(pesquisa.value!=""){
+
+        const texto = pesquisa.value.toLowerCase();
+
+        listaAtual = listaAtual.filter(item=>
+
+            item.nome.toLowerCase().includes(texto) ||
+
+            item.marca.toLowerCase().includes(texto)
+
+        );
+
+    }
+
+    switch(ordenacao.value){
+
+        case "menorPreco":
+
+            listaAtual.sort((a,b)=>a.preco-b.preco);
+
+            break;
+
+        case "maiorPreco":
+
+            listaAtual.sort((a,b)=>b.preco-a.preco);
+
+            break;
+
+        case "nome":
+
+            listaAtual.sort((a,b)=>
+
+                a.nome.localeCompare(b.nome)
+
+            );
+
+            break;
+
+    }
+
+    quantidade=12;
+
+    renderizar();
+
+}
+
+pesquisa.addEventListener("keyup",aplicarFiltros);
+
+categoria.addEventListener("change",aplicarFiltros);
+
+ordenacao.addEventListener("change",aplicarFiltros);
+
+btnMais.addEventListener("click",()=>{
+
+    quantidade += 12;
+
+    renderizar();
+
+});
+
+document.addEventListener("DOMContentLoaded",()=>{
+
+    atualizarContador();
+
+    renderizar();
+
+});
+
+</script>
+
+</body>
+
+                                        </html>
